@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sprint-Task3</title>
+  <style>
+    .container{
+      display: flex;
+      margin-top: 30px;
+      margin-left: 30px;
+      padding: 0px 20px 20px 20px;
+      width:850px;
+      align-items: center;
+      border: 1px solid gray;
+      border-radius: 5px;
+    }
+    .currency{
+      margin-right: 20px;
+    }
+    .summa{
+      margin-right: 20px;
+    }
+  
+    .summa input{
+      padding: 7px;
+      margin-right: 10px;
+    }
+    .summa div{
+      display: flex;
+    }
+    .currency input{
+      background-color: rgba(233, 226, 226, 0.792);
+      border: none;
+      padding: 10px;
+     }
+     
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="summa">
+      <p>Введите сумму</p>
+      <div>
+        <input id ="amount" type="text" onchange="change()">
+        <select id="selector" onchange="change()">
+           <option value="KZT">KZT</option>
+           <option value="USD">USD</option>
+           <option value="EUR">EUR</option>
+        </select>
+      </div>
+    </div>
+    <div class="currency">
+      <p>KZT(tenge)</p>
+      <input type="text" readonly id="kzt">
+    </div>
+    <div class="currency">
+      <p>USD(dollar)</p>
+      <input type="text" readonly id="usd">
+    </div>
+    <div class="currency">
+      <p>EUR(euro)</p>
+      <input type="text" readonly id="euro">
+    </div>
+  </div>
+      
+   <script>
+       function change() {
+            let input = parseInt(document.getElementById('amount').value)
+            let selecttype = document.getElementById('selector').value
+          
+           if(selecttype=='KZT'){
+                    document.getElementById('kzt').value = '-'
+                    document.getElementById('usd').value = (input/431).toFixed(2)
+                    document.getElementById('euro').value = (input/509).toFixed(2)
+                   
+           }
+           else if(selecttype=='USD'){
+                    document.getElementById('kzt').value = (input*429).toFixed(2)
+                    document.getElementById('usd').value = '-'
+                    document.getElementById('euro').value = (input*429/509).toFixed(2)
+             }
+            else if(selecttype=='EUR'){
+                    document.getElementById('kzt').value = (input*507).toFixed(2)
+                    document.getElementById('usd').value = (input*507/431).toFixed(2)
+                    document.getElementById('euro').value = '-'
+                
+            }
+          }
+   </script>
+</body>
+</html>
